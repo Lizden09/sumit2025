@@ -1,3 +1,10 @@
-<div class="body body-trimmed">
-    <router-outlet></router-outlet>
+<!-- main.component.html -->
+<div
+  class="body"
+  [ngClass]="{
+    'body-trimmed': !isSidebarCollapsed,
+    'body-md-screen': isSidebarCollapsed
+  }"
+>
+  <router-outlet></router-outlet>
 </div>

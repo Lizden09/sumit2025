@@ -1,2 +1,9 @@
-<app-left-sidebar></app-left-sidebar>
-<app-main></app-main>
+<!-- app.component.html -->
+<app-left-sidebar
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
+></app-left-sidebar>
+
+<app-main
+  [isSidebarCollapsed]="isLeftSidebarCollapsed()"
+></app-main>
