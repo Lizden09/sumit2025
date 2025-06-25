@@ -6,7 +6,7 @@
   top: 0;
   transition: all 0.5s ease;
   background: #f4f7fa;
-  padding: 3rem;
+  padding: 0 0 3rem 0;
   height: 100vh !important;
 }
 
@@ -38,3 +38,33 @@
     z-index: 1100;
   }
 }
+
+/* navbar */
+.navbar {
+  height: 60px;
+  background-color: #012a5b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+

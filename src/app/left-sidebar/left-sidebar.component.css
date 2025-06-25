@@ -6,7 +6,7 @@
   top: 0;
   width: 16.5625rem;
   height: 100vh;
-  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  /* box-shadow: 0.063rem 0 1.25rem 0 #8690a3; */
 }
 .sidenav-collapsed {
   width: 5rem;
@@ -93,30 +93,6 @@
 .active .sidenav-link-icon,
 .active .sidenav-link-text {
   color: #000;
-}
-
-/* Ocultar sidebar fuera de pantalla en móvil */
-@media (max-width: 768px) {
-  .sidenav {
-    position: fixed;
-    left: -100%;
-    transition: left 0.3s ease;
-    width: 16.5625rem;
-    height: 100vh;
-    z-index: 1000;
-  }
-  .sidenav.active {
-    left: 0;
-    background-color: #012a5b;
-  }
-
-  /* Main siempre ocupa todo ancho en móvil */
-  .body,
-  .body-trimmed,
-  .body-md-screen {
-    margin-left: 0 !important;
-    width: 100% !important;
-  }
 }
 
 
