@@ -1,0 +1,55 @@
+.card{
+    border-radius: 2.5rem;
+    border: 1px solid #f1f1f4;
+}
+
+.card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    min-height: 70px;
+    padding: 0 2.25rem;
+    color: #000;
+}
+
+.card-header{
+    margin-top: 2.5rem;
+}
+
+/* header-card-text */
+.fs-2hx {
+    font-size: 2.5rem !important;
+}
+
+/* bagde */
+.badge-light-danger {
+    background-color: rgba(246, 78, 96, 0.2);
+    color: var(--bs-danger);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+}
+
+.fs-base {
+    font-size: 1rem !important;
+}
+
+/* btn-card */
+
+.btn{
+    background-color: rgba(153, 161, 183, 0.2);
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+}
+
+.custom-btn-icon {
+  padding: 12px; /* o el valor que quieras */
+  font-size: 2rem; /* afecta ícono si es font */
+  width: 32px;
+  height: 32px;
+}
+
