@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+import { DashboardComponent } from '../modules/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-main',

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { GraphicsComponent } from '../graphics/graphics.component';
+import { ChartsComponent } from '../../widgets/charts/charts.component';
+import { CardsComponent } from '../../widgets/cards/cards.component';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [GraphicsComponent],
+  imports: [ChartsComponent, CardsComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

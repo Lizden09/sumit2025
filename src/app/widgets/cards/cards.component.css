@@ -3,11 +3,12 @@
 .general-container{
   width: 100% ;
   display: flex;
+  justify-content: space-between;
 }
 
 .card{
   margin: 2.5rem 2.5rem 0 2.5rem;
-  width: 16rem;
+  width: 20rem;
   height: 10rem;
   border-radius:5px;
 }

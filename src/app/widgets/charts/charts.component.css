@@ -1,3 +1,10 @@
+.card-container{
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+}
+
 .card{
     border-radius: 2.5rem;
     border: 1px solid #f1f1f4;
@@ -22,6 +29,10 @@
     font-size: 2.5rem !important;
 }
 
+.header-bg{
+    background-color: #fff;
+}
+
 /* bagde */
 .badge-light-danger {
     background-color: rgba(246, 78, 96, 0.2);
@@ -38,10 +49,17 @@
 }
 
 /* btn-card */
+.card-toolbar{
+    display: flex;
+    justify-content: end;
+}
 
 .btn{
     background-color: rgba(153, 161, 183, 0.2);
-    display: inline-flex;
+    display: flex;
+    height: 32px;
+    width: 32px;
+    justify-content: end;
     align-items: center;
     border: 0;
 }

@@ -20,9 +20,9 @@ export class LeftSidebarComponent {
       label:'Panel',
     },
     {
-      routeLink:'products',
+      routeLink:'imports',
       icon: 'fal fa-box-open',
-      label:'Productos',
+      label:'Importaciones',
     },
     {
       routeLink:'pages',
