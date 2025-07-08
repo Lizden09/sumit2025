@@ -28,6 +28,8 @@
 }
 
 .btn-container{
+    margin: 2.5rem 0 2.5rem 0;
+    height: 6vh;
     width: 65vw;
     display: flex;
     justify-content: end;

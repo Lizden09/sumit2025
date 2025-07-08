@@ -1,0 +1,14 @@
+/* .general-container{
+    width: 90vw;
+} */
+.container {
+    /* width: 80vw; */
+    /* max-width: 100%; */
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/*
+.form-container {
+    width: 10vw;
+} */
