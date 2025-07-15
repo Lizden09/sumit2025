@@ -1,22 +1,44 @@
-<div class="general-container">
-    <div class="container p-2">
-        <div class="mb-3">
-            <label for="name" class="form-label">Nueva Importación:</label>
-            <div class="input-group">
-                <input type="text" class="form-control" formControlName="Nueva Importación" placeholder="Nueva Importación">
+<div class="p-5">
+    <div class="d-flex w-100 justify-content-center">
+        <h1 mat-dialog-title>Nueva Importación</h1>
+    </div>
+    <div mat-dialog-content>
+        <form [formGroup]="importForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Código:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" formControlName="Codigo" placeholder="">
+                </div>
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="name" class="form-label">Línea:</label>
-            <div class="input-group">
-                <input type="text" class="form-control" formControlName="nit" placeholder="Línea">
+            <div class="mb-3">
+                <label>Fecha de ingreso</label>
+                <app-date-picker (dateChange)="onFechaCambiada($event)"></app-date-picker>
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="name" class="form-label">NIT:</label>
-            <div class="input-group">
-                <input type="text" class="form-control" formControlName="nit" placeholder="NIT">
+            <div class="mb-3">
+                <label for="name" class="form-label">Creado Por: </label>
+                <div class="input-group">
+                    <select class="form-select" formControlName="employeId">
+                        <option value="" disabled selected>Seleccione un empleado</option>
+                        <option *ngFor="let employe of employees" [value]="employe.id">
+                            {{ employe.nombre }}
+                        </option>
+                    </select>
+                </div>
             </div>
-        </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Comentario:</label>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Comentario" id="floatingTextarea"></textarea>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Fecha de ingreso</label>
+                <app-date-picker (dateChange)="onFechaCambiada($event)"></app-date-picker>
+            </div>
+        </form>
+    </div>
+    <div mat-dialog-actions class="w-100 d-flex justify-content-center">
+        <button mat-button (click)="close()" class="btn btn-danger me-2">Cancelar</button>
+        <button mat-button class="btn btn-success">Agregar</button>
     </div>
 </div>

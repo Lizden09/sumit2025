@@ -1,0 +1,9 @@
+<div class="input-group" [attr.id]="pickerId" data-td-target-input="nearest" data-td-target-toggle="nearest">
+  <input type="text" #input class="form-control"
+         [attr.data-td-target]="'#' + pickerId"
+         [placeholder]="placeholder"
+         autocomplete="off" />
+  <span class="input-group-text" [attr.data-td-target]="'#' + pickerId" data-td-toggle="datetimepicker">
+    <i class="bi bi-calendar"></i>
+  </span>
+</div>
