@@ -1,14 +1,48 @@
 /* cards */
 
-.general-container{
-  width: 100% ;
+.general-container {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.card{
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
   margin: 2.5rem 2.5rem 0 2.5rem;
-  width: 20rem;
-  height: 10rem;
-  border-radius:5px;
+  width: 28rem;
+  height: 12rem;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.03); /* Se levanta y agranda un poco */
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más marcada al hacer hover */
+}
+
+.left-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+}
+
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  background-color: #ffcc2c;
+  color: #fff;
+}
+
+.logo {
+  font-size: 24px;
+
 }

@@ -9,10 +9,14 @@
                 <div class="input-group">
                     <input type="text" class="form-control" formControlName="Codigo" placeholder="">
                 </div>
+                <span class="text-danger"
+                    *ngIf="importForm.get('Codigo')?.invalid && importForm.get('Codigo')?.touched">{{getErrorMessage('Codigo')}}</span>
             </div>
             <div class="mb-3">
-                <label>Fecha de ingreso</label>
-                <app-date-picker (dateChange)="onFechaCambiada($event)"></app-date-picker>
+                <!-- <label>Fecha de ingreso</label>
+                <app-date-picker (dateChange)="onFechaCambiada($event)"></app-date-picker> -->
+                <app-date-picker placeholder="Fecha de ingreso" (dateChange)="onFechaSeleccionada($event)">
+                </app-date-picker>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Creado Por: </label>
@@ -32,8 +36,10 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label>Fecha de ingreso</label>
-                <app-date-picker (dateChange)="onFechaCambiada($event)"></app-date-picker>
+                <!-- <label>Fecha de ingreso</label>
+                <app-date-picker (dateChange)="onFechaCambiada($event)"></app-date-picker> -->
+                <app-date-picker placeholder="Fecha de ingreso" (dateChange)="onFechaSeleccionada($event)">
+                </app-date-picker>
             </div>
         </form>
     </div>

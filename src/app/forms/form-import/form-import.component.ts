@@ -16,18 +16,18 @@ import { DatePickerComponent } from '../../shared/components/date-picker/date-pi
 })
 export class FormImportComponent {
 
-importForm!: FormGroup;
-private fb = inject(FormBuilder);
+  importForm!: FormGroup;
+  private fb = inject(FormBuilder);
 
-employees = [
-  { id: 1, nombre: 'Carlos Gómez' },
-  { id: 2, nombre: 'Ana Rodríguez' },
-  { id: 3, nombre: 'Luis Hernández' },
-  { id: 4, nombre: 'María Fernández' },
-  { id: 5, nombre: 'Javier Morales' }
-];
+  employees = [
+    { id: 1, nombre: 'Carlos Gómez' },
+    { id: 2, nombre: 'Ana Rodríguez' },
+    { id: 3, nombre: 'Luis Hernández' },
+    { id: 4, nombre: 'María Fernández' },
+    { id: 5, nombre: 'Javier Morales' }
+  ];
 
-constructor(private dialogRef: MatDialogRef<FormImportComponent>) {
+  constructor(private dialogRef: MatDialogRef<FormImportComponent>) {
     this.importForm = this.fb.group({
       employeId: ['', Validators.required],
       Codigo: ['', Validators.required],
@@ -37,8 +37,18 @@ constructor(private dialogRef: MatDialogRef<FormImportComponent>) {
     });
   }
 
-  onFechaCambiada(FechaIngreso: string) {
-    this.importForm.patchValue({ FechaIngreso });
+  onFechaSeleccionada(fecha: Date | null) {
+    console.log('Fecha seleccionada:', fecha);
+  }
+
+  getErrorMessage(field: string): string {
+    if (field === 'Codigo') {
+      return this.importForm.get('Codigo')?.hasError('required') ? 'El campo es obligatorio' : '';
+    }
+    if (field === 'Codigo') {
+      return this.importForm.get('Codigo')?.hasError('required') ? 'El campo es obligatorio' : '';
+    }
+    return '';
   }
 
   close() {

@@ -1,43 +1,31 @@
-import { AfterViewInit, Component, ElementRef, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { TempusDominus } from '@eonasdan/tempus-dominus'
+import { AfterViewInit, Component, Input, Output, EventEmitter } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule, FormControl, ReactiveFormsModule } from "@angular/forms";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-date-picker',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatNativeDateModule],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
+  ],
+
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.css'
 })
 export class DatePickerComponent implements AfterViewInit {
-
-  @ViewChild('input', { static: false }) inputRef!: ElementRef<HTMLInputElement>;
-
   @Input() placeholder: string = 'Selecciona una fecha';
-  @Output() dateChange = new EventEmitter<string>();
+  @Output() dateChange = new EventEmitter<Date | null>();
 
-  pickerId = 'datepicker-' + Math.floor(Math.random() * 100000); // ID único
+  fechaControl = new FormControl<Date | null>(null);
 
   ngAfterViewInit(): void {
-    const element = document.getElementById(this.pickerId);
-    if (element) {
-      const picker = new TempusDominus(element, {
-        display: {
-          components: {
-            clock: false
-          }
-        },
-        localization: {
-          locale: 'es'
-        }
-      });
-
-      picker.subscribe('change.td', (e: any) => {
-        const fecha = e.date?.format('YYYY-MM-DD') || '';
-        this.dateChange.emit(fecha);
-      });
-    } else {
-      console.error(`Elemento con ID ${this.pickerId} no encontrado`);
-    }
+    this.fechaControl.valueChanges.subscribe(value => {
+      this.dateChange.emit(value);
+    });
   }
 }

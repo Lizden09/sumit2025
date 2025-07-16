@@ -9,5 +9,9 @@ import { CardsComponent } from '../../widgets/cards/cards.component';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-
+ importCards = [
+    { title: 'Nueva Importación', iconClass: 'fal fa-bars', route: '/imports' },
+    { title: 'Total ubicaciones', iconClass: 'fa fa-map-marker-alt', route: '/imports' },
+    { title: 'Items Registrados', iconClass: 'fa fa-box', route: '/imports' },
+  ];
 }

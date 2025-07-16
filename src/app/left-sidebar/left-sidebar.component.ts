@@ -25,9 +25,9 @@ export class LeftSidebarComponent {
       label:'Importaciones',
     },
     {
-      routeLink:'pages',
+      routeLink:'lines',
       icon: 'fal fa-file',
-      label:'Páginas',
+      label:'Líneas',
     },
     {
       routeLink:'settings',

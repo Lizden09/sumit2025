@@ -1,14 +1,19 @@
 <section class="general-container">
-  <div class="card" style="background-color: aqua;">
-    <p>Nueva Importación</p>
-  </div>
-  <div class="card" style="background-color: rgb(98, 92, 175);">
-    <p>Registrar Items</p>
-  </div>
-  <div class="card" style="background-color: rgb(97, 133, 64);">
-    <p>Items Registrados</p>
-  </div>
-  <div class="card" style="background-color: rgb(102, 140, 209);">
-    <p>Items Secundarios</p>
+  <div 
+    class="card" 
+    *ngFor="let card of cards" 
+    [routerLink]="card.route"
+  >
+    <div class="left-side">
+      <p>{{ card.title }}</p>
+    </div>
+    <div class="right-side">
+      <div class="logo">
+        <i [class]="card.iconClass"></i>
+      </div>
+    </div>
   </div>
 </section>
+
+
+

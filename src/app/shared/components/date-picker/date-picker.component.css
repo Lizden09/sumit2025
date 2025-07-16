@@ -1,7 +1,4 @@
-.tempus-dominus-container {
-  z-index: 1050 !important;
-}
-
-.input-group-text {
-  cursor: pointer;
+:host {
+  display: block;
+  width: 100%;
 }

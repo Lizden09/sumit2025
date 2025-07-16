@@ -1,9 +1,12 @@
-<div class="input-group" [attr.id]="pickerId" data-td-target-input="nearest" data-td-target-toggle="nearest">
-  <input type="text" #input class="form-control"
-         [attr.data-td-target]="'#' + pickerId"
-         [placeholder]="placeholder"
-         autocomplete="off" />
-  <span class="input-group-text" [attr.data-td-target]="'#' + pickerId" data-td-toggle="datetimepicker">
-    <i class="bi bi-calendar"></i>
-  </span>
-</div>
+<mat-form-field appearance="fill" class="w-100">
+  <mat-label>{{ placeholder }}</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [formControl]="fechaControl"
+    placeholder="{{ placeholder }}"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
