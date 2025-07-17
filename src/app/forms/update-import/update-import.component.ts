@@ -28,7 +28,7 @@ editImportForm: FormGroup;
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.editImportForm = this.fb.group({
-      idImportacion: ['', Validators.required],
+      idImportacion: [{value: '', disabled: true}, Validators.required],
       employeId: ['', Validators.required],
       Codigo: ['', Validators.required],
       FechaCreacion: ['', Validators.required],
@@ -54,7 +54,6 @@ editImportForm: FormGroup;
   const [day, month, year] = dateStr.split('/');
   return new Date(+year, +month - 1, +day);
 }
-
 
   onFechaCreacion(fecha: Date | null) {
     this.editImportForm.get('FechaCreacion')?.setValue(fecha);
