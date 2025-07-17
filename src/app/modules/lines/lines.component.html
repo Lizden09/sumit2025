@@ -1,33 +1,45 @@
 <div class="general-container">
-    <div class="container">
-        <div class=" btn-container m-2">
-            <button class="btn">nueva Importación</button>
-        </div>
-        <div class="table-container">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Número</th>
-                  <th scope="col">ID Importación</th>
-                  <th scope="col">Items</th>
-                  <th scope="col">Creado Por</th>
-                  <th scope="col">Fecha de Creación</th>
-                  <th scope="col">Última Edición</th>
-                  <th scope="col">Editado Por</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">01</th>
-                  <td>05</td>
-                  <td>34</td>
-                  <td>Juliana Vazquez</td>
-                  <td>11/04/2025</td>
-                  <td>26/04/2025</td>
-                  <td>Manuel Ramirez</td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
+  <div class="container">
+    <div class=" btn-container m-2">
+      <button class="btn">nueva Importación</button>
     </div>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Número</th>
+            <th scope="col">ID Importación</th>
+            <th scope="col">Items</th>
+            <th scope="col">Creado Por</th>
+            <th scope="col">Fecha de Creación</th>
+            <th scope="col">Última Edición</th>
+            <th scope="col">Editado Por</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Elimnar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">01</th>
+            <td>05</td>
+            <td>34</td>
+            <td>Juliana Vazquez</td>
+            <td>11/04/2025</td>
+            <td>26/04/2025</td>
+            <td>Manuel Ramirez</td>
+            <td>
+              <button class="btn btn-sm btn-primary" title="Editar">
+                <i class="fa fa-edit"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-danger" title="Eliminar">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

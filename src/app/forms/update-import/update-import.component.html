@@ -1,0 +1,56 @@
+<div class="p-5">
+  <div class="d-flex w-100 justify-content-center">
+    <h1 mat-dialog-title>Editar Importación</h1>
+  </div>
+  <div mat-dialog-content>
+    <form [formGroup]="editImportForm">
+      <div class="mb-3">
+        <label for="idImportacion" class="form-label">ID Importación</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="idImportacion" id="idImportacion" placeholder="">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="Codigo" class="form-label">Código</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="Codigo" id="Codigo" placeholder="">
+        </div>
+        <span class="text-danger" *ngIf="editImportForm.get('Codigo')?.invalid && editImportForm.get('Codigo')?.touched">
+          {{ getErrorMessage('Codigo') }}
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label for="employeId" class="form-label">Creado Por:</label>
+        <div class="input-group">
+          <select class="form-select" formControlName="employeId" id="employeId">
+            <option value="" disabled>Seleccione un empleado</option>
+            <option *ngFor="let employe of employees" [value]="employe.id">{{ employe.nombre }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <app-date-picker placeholder="Fecha de creación" (dateChange)="onFechaCreacion($event)">
+        </app-date-picker>
+      </div>
+
+      <div class="mb-3">
+        <app-date-picker placeholder="Última edición" (dateChange)="onUltimaEdicion($event)">
+        </app-date-picker>
+      </div>
+      <div class="mb-3">
+        <label for="Comentario" class="form-label">Comentario:</label>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Comentario" id="Comentario" formControlName="Comentario"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="w-100 d-flex justify-content-center">
+    <button mat-button (click)="close()" class="btn btn-danger me-2">Cancelar</button>
+    <button mat-button class="btn btn-success" [disabled]="editForm.invalid">Actualizar</button>
+  </div>
+</div>

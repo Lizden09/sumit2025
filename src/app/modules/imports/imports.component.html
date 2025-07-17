@@ -1,36 +1,41 @@
 <div class="general-container">
-    <div class="container">
-        <div class=" btn-container m-2">
-            <button class="btn" (click)="openModal()">Nueva Importación</button>
-        </div>
-        <div class="table-container">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Código</th>
-                  <th scope="col">Creador Por</th>
-                  <th scope="col">Fecha de Creación</th>
-                  <th scope="col">Última edición</th>
-                  <th scope="col">Comentarios</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">160725</th>
-                  <td>Cristina Ordoñez</td>
-                  <td>14/07/2025</td>
-                  <td>16/07/2025</td>
-                  <td>Importación de computadoras de escritorio y cargadores</td>
-                </tr>
-                <tr>
-                  <th scope="row">11012024</th>
-                  <td>Manuel Ramirez</td>
-                  <td>16/01/2024</td>
-                  <td>25/05/2024</td>
-                  <td>Importación de chromebooks </td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
+  <div class="container">
+    <div class=" btn-container m-2">
+      <button class="btn" (click)="openModal()">Nueva Importación</button>
     </div>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Creador Por</th>
+            <th scope="col">Fecha de Creación</th>
+            <th scope="col">Última edición</th>
+            <th scope="col">Comentarios</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Elimnar</th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let item of importaciones">
+            <th scope="row">{{ item.codigo }}</th>
+            <td>{{ item.creadoPor }}</td>
+            <td>{{ item.fechaCreacion }}</td>
+            <td>{{ item.ultimaEdicion }}</td>
+            <td>{{ item.comentarios }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary" title="Editar" (click)="editarImportacion(item)">
+                <i class="fa fa-edit"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-danger" title="Eliminar" (click)="eliminarImportacion(item)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

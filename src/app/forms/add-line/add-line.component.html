@@ -1,16 +1,16 @@
 <div class="p-5">
     <div class="d-flex w-100 justify-content-center">
-        <h1 mat-dialog-title>Nueva Importación</h1>
+        <h1 mat-dialog-title>Nueva Línea</h1>
     </div>
     <div mat-dialog-content>
-        <form [formGroup]="importForm">
+        <form [formGroup]="addLineForm">
             <div class="mb-3">
-                <label for="name" class="form-label">Código:</label>
+                <label for="name" class="form-label">Número:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" formControlName="Codigo" placeholder="">
+                    <input type="text" class="form-control" formControlName="Numero" placeholder="">
                 </div>
                 <span class="text-danger"
-                    *ngIf="importForm.get('Codigo')?.invalid && importForm.get('Codigo')?.touched">{{getErrorMessage('Codigo')}}</span>
+                    *ngIf="importForm.get('Numero')?.invalid && importForm.get('Numero')?.touched">{{getErrorMessage('Numero')}}</span>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Creado Por: </label>
