@@ -7,6 +7,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th scope="col">ID Importación</th>
             <th scope="col">Código</th>
             <th scope="col">Creador Por</th>
             <th scope="col">Fecha de Creación</th>
@@ -17,8 +18,9 @@
           </tr>
         </thead>
         <tbody>
-         <tr *ngFor="let item of importaciones">
-            <th scope="row">{{ item.codigo }}</th>
+         <tr *ngFor="let item of imports">
+            <th scope="row">{{ item.idImport }}</th>
+            <td>{{ item.codigo }}</td>
             <td>{{ item.creadoPor }}</td>
             <td>{{ item.fechaCreacion }}</td>
             <td>{{ item.ultimaEdicion }}</td>

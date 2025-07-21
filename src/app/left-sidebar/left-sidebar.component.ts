@@ -30,6 +30,11 @@ export class LeftSidebarComponent {
       label:'Líneas',
     },
     {
+      routeLink:'items',
+      icon: 'fal fa-file',
+      label:'Items',
+    },
+    {
       routeLink:'settings',
       icon: 'fal fa-cog',
       label:'Configuraciones',

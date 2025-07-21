@@ -16,9 +16,9 @@ export class ImportsComponent {
 
   constructor(private dialog: MatDialog) { }
 
-  importaciones = [
+  imports = [
     {
-      id: 1,
+      idImport: 1,
       codigo: '160725',
       creadoPor: 'Cristina Ordoñez',
       fechaCreacion: '14/07/2025',
@@ -26,7 +26,7 @@ export class ImportsComponent {
       comentarios: 'Importación de computadoras de escritorio y cargadores',
     },
     {
-      id: 2,
+      idImport: 2,
       codigo: '11012024',
       creadoPor: 'Manuel Ramirez',
       fechaCreacion: '16/01/2024',
@@ -35,13 +35,15 @@ export class ImportsComponent {
     }
   ];
 
+  //Añadir importación
   openModal() {
     this.dialog.open(FormImportComponent, {
       width: '600px',
-      data: {} // puedes pasar datos si es necesario
+      data: {}
     });
   }
 
+  //Editar importación
   editarImportacion(item: any) {
   const dialogRef = this.dialog.open(UpdateImportComponent, {
     width: '600px',
@@ -50,10 +52,11 @@ export class ImportsComponent {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      const index = this.importaciones.findIndex(i => i.codigo === item.codigo);
+      const index = this.imports.findIndex(i => i.idImport === item.idImport);
       if (index !== -1) {
-        this.importaciones[index] = {
-          ...this.importaciones[index],
+        this.imports[index] = {
+          ...this.imports[index],
+          idImport: result.IDImport,
           codigo: result.Codigo,
           creadoPor: this.getEmpleadoNombrePorId(result.employeId),
           fechaCreacion: this.formatDate(result.FechaCreacion),
@@ -65,6 +68,7 @@ export class ImportsComponent {
   });
 }
 
+//dropdown empleados
 getEmpleadoNombrePorId(id: number): string {
   const empleado = [
     { id: 1, nombre: 'Carlos Gómez' },
@@ -94,16 +98,10 @@ openConfirmDialog() {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      // El usuario confirmó
       console.log('Acción confirmada');
     } else {
-      // El usuario canceló
       console.log('Acción cancelada');
     }
   });
-
-  // eliminarImportacion(item: any) {
-  //   console.log('Eliminar', item);
-  // }
   }
 }

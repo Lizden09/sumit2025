@@ -1,0 +1,6 @@
+.container {
+    /* width: 80vw; */
+    max-height: 85vh;
+    box-sizing: border-box; 
+    overflow-x: hidden;
+}
