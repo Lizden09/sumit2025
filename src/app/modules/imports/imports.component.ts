@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormImportComponent } from '../../forms/form-import/form-import.component';
 import { UpdateImportComponent } from '../../forms/update-import/update-import.component';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-imports',
@@ -85,7 +86,24 @@ formatDate(date: Date | string): string {
   return `${day}/${month}/${year}`;
 }
 
-  eliminarImportacion(item: any) {
-    console.log('Eliminar', item);
+openConfirmDialog() {
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: '350px',
+    data: { message: '¿Está seguro que desea confirmar?' }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // El usuario confirmó
+      console.log('Acción confirmada');
+    } else {
+      // El usuario canceló
+      console.log('Acción cancelada');
+    }
+  });
+
+  // eliminarImportacion(item: any) {
+  //   console.log('Eliminar', item);
+  // }
   }
 }

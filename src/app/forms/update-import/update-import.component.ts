@@ -12,7 +12,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrl: './update-import.component.css'
 })
 export class UpdateImportComponent {
-editImportForm: FormGroup;
+
+  editImportForm: FormGroup;
   private fb = inject(FormBuilder);
 
   employees = [
@@ -28,7 +29,7 @@ editImportForm: FormGroup;
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.editImportForm = this.fb.group({
-      idImportacion: [{value: '', disabled: true}, Validators.required],
+      idImportacion: [{ value: '', disabled: true }, Validators.required],
       employeId: ['', Validators.required],
       Codigo: ['', Validators.required],
       FechaCreacion: ['', Validators.required],
@@ -50,10 +51,10 @@ editImportForm: FormGroup;
 
   // Convertir string 'dd/MM/yyyy' a objeto Date
   parseDate(dateStr: string): Date | null {
-  if (!dateStr) return null;
-  const [day, month, year] = dateStr.split('/');
-  return new Date(+year, +month - 1, +day);
-}
+    if (!dateStr) return null;
+    const [day, month, year] = dateStr.split('/');
+    return new Date(+year, +month - 1, +day);
+  }
 
   onFechaCreacion(fecha: Date | null) {
     this.editImportForm.get('FechaCreacion')?.setValue(fecha);

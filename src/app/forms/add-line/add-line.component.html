@@ -7,10 +7,18 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Número:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" formControlName="Numero" placeholder="">
+                    <input type="text" class="form-control" formControlName="number" placeholder="">
                 </div>
                 <span class="text-danger"
-                    *ngIf="importForm.get('Numero')?.invalid && importForm.get('Numero')?.touched">{{getErrorMessage('Numero')}}</span>
+                    *ngIf="addLineForm.get('number')?.invalid && addLineForm.get('number')?.touched">{{getErrorMessage('number')}}</span>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">ID Importación:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" formControlName="idImport" placeholder="">
+                </div>
+                <span class="text-danger"
+                    *ngIf="addLineForm.get('idImport')?.invalid && addLineForm.get('idImport')?.touched">{{getErrorMessageImport('idImport')}}</span>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Creado Por: </label>

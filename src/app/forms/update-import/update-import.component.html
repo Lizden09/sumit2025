@@ -16,7 +16,8 @@
         <div class="input-group">
           <input type="text" class="form-control" formControlName="Codigo" id="Codigo" placeholder="">
         </div>
-        <span class="text-danger" *ngIf="editImportForm.get('Codigo')?.invalid && editImportForm.get('Codigo')?.touched">
+        <span class="text-danger"
+          *ngIf="editImportForm.get('Codigo')?.invalid && editImportForm.get('Codigo')?.touched">
           {{ getErrorMessage('Codigo') }}
         </span>
       </div>
@@ -32,18 +33,21 @@
       </div>
 
       <div class="mb-3">
-        <app-date-picker placeholder="Fecha de creación" (dateChange)="onFechaCreacion($event)">
+        <app-date-picker placeholder="Fecha de creación" [value]="editImportForm.get('FechaCreacion')?.value"
+          (dateChange)="onFechaCreacion($event)">
         </app-date-picker>
       </div>
 
       <div class="mb-3">
-        <app-date-picker placeholder="Última edición" (dateChange)="onUltimaEdicion($event)">
+        <app-date-picker placeholder="Última edición" [value]="editImportForm.get('FechaIngreso')?.value"
+          (dateChange)="onUltimaEdicion($event)">
         </app-date-picker>
       </div>
       <div class="mb-3">
         <label for="Comentario" class="form-label">Comentario:</label>
         <div class="form-floating">
-          <textarea class="form-control" placeholder="Comentario" id="Comentario" formControlName="Comentario"></textarea>
+          <textarea class="form-control" placeholder="Comentario" id="Comentario"
+            formControlName="Comentario"></textarea>
         </div>
       </div>
     </form>

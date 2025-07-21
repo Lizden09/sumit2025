@@ -23,6 +23,11 @@ export class DatePickerComponent implements AfterViewInit {
 
   fechaControl = new FormControl<Date | null>(null);
 
+  // Recibe el valor inicial del padre y lo pone en el control sin disparar evento
+  @Input() set value(date: Date | null) {
+    this.fechaControl.setValue(date, { emitEvent: false });
+  }
+
   ngAfterViewInit(): void {
     this.fechaControl.valueChanges.subscribe(value => {
       this.dateChange.emit(value);
