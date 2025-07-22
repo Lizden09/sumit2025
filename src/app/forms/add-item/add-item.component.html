@@ -1,1 +1,16 @@
-<div class="general container" style="height: 80vh; width: 100vw;background-color: white;"></div>
+<!-- <div class="general-container"></div>  -->
+<div
+    style="display: inline-block; padding: 10px; background-color: lightgreen; max-width: 150vw; height: 80vh; margin-top: 3rem; margin-left: 3rem;">
+    Este div se ajusta al contenido automáticamente
+    <div class="mb-3">
+        <label for="name" class="form-label">Tipo de Equipo:  </label>
+        <div class="input-group">
+            <select class="form-select" formControlName="tipoItem">
+                <option value="" disabled selected>Seleccione un tipo de equipo</option>
+                <option *ngFor="let item of Items" [value]="item.id">
+                    {{ item.item }}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
