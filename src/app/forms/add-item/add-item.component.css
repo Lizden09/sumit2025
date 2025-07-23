@@ -1,6 +1,10 @@
-.general-container{
+.container{
     margin: 4rem;
     width: 85vw;
     height: 80vh;
     background-color: #fff;
+}
+
+.form-control, .form-select {
+  max-width: 300px;
 }

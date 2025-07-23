@@ -1,16 +1,63 @@
 <!-- <div class="general-container"></div>  -->
-<div
-    style="display: inline-block; padding: 10px; background-color: lightgreen; max-width: 150vw; height: 80vh; margin-top: 3rem; margin-left: 3rem;">
-    Este div se ajusta al contenido automáticamente
-    <div class="mb-3">
-        <label for="name" class="form-label">Tipo de Equipo:  </label>
-        <div class="input-group">
-            <select class="form-select" formControlName="tipoItem">
-                <option value="" disabled selected>Seleccione un tipo de equipo</option>
-                <option *ngFor="let item of Items" [value]="item.id">
-                    {{ item.item }}
-                </option>
-            </select>
+<div class="p-3 container">
+    <form [formGroup]="addItemForm">
+        Este div se ajusta al contenido automáticamente
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="importCode" class="form-label">No. Importación:</label>
+                <div class="mb-3">
+                    <input type="text" id="importCode" class="form-control" formControlName="importCode"
+                        placeholder="" />
+                    <p class="mt-1 mb-0" *ngIf="mensaje" [ngClass]="{ 'text-success': valido, 'text-danger': !valido }">
+                        {{ mensaje }}
+                    </p>
+                </div>
+                <label for="itemType" class="form-label">Tipo de Equipo: </label>
+                <div class="mb-3">
+                    <select class="form-select" formControlName="itemType">
+                        <option value="" disabled selected>Seleccione un tipo</option>
+                        <option *ngFor="let item of Items" [value]="item.id">{{ item.item }}</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-primary">Añadir variaciones</button>
+                </div>
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Marca:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="marca" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna 2: No. Línea -->
+            <div class="col-md-6">
+                <label for="importLine" class="form-label">No. Línea:</label>
+                <div class="mb-3">
+                    <input type="text" id="importLine" class="form-control" formControlName="lineCode" placeholder="" />
+                    <p class="mt-1 mb-0" *ngIf="mensajeLinea"
+                        [ngClass]="{ 'text-success': validoLinea, 'text-danger': !validoLinea }">
+                        {{ mensajeLinea }}
+                    </p>
+                </div>
+
+                <label for="itemQuantity" class="form-label">Cantidad de Items:</label>
+                <div class="mb-3">
+                    <input type="text" id="itemQuantity" class="form-control" formControlName="itemQuantity"
+                        placeholder="" />
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-primary" (click)="habilitarCantidad()">Guardar item único</button>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Modelo:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="modelo" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <!-- Columna 3: No. Línea -->
         </div>
-    </div>
+
+    </form>
 </div>
