@@ -1,0 +1,28 @@
+<div class="table-responsive mt-4" *ngIf="data.length > 0">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>No. Importación</th>
+        <th>No. Línea</th>
+        <th>Tipo</th>
+        <th>Marca</th>
+        <th>Serie</th>
+        <th>Modelo</th>
+        <th>Cantidad</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.importCode }}</td>
+        <td>{{ item.lineCode }}</td>
+        <td>{{ item.itemType }}</td>
+        <td>{{ item.marca }}</td>
+        <td>{{ item.serie }}</td>
+        <td>{{ item.modelo }}</td>
+        <td>{{ item.itemQuantity }}</td>
+        <td>{{ item.estado }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

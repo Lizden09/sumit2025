@@ -21,10 +21,17 @@ export class AddItemComponent {
   mensajeLinea = '';
   validoLinea = false;
 
+  itemsAgregados: any[] = [];
+
   Items = [
     { id: 1, item: 'Escritorio' },
     { id: 2, item: 'Laptop' },
     { id: 3, item: 'Cargador' }
+  ];
+
+  States = [
+    { id: 1, state: 'Nuevo' },
+    { id: 2, state: 'SemiNuevo' }
   ];
 
   constructor() {
@@ -34,7 +41,9 @@ export class AddItemComponent {
       lineCode: ['', Validators.required],
       itemQuantity: [{ value: '', disabled: true }, Validators.required], // deshabilitado desde el inicio
       marca: ['', Validators.required],
-      modelo: ['', Validators.required]
+      modelo: ['', Validators.required],
+      serie: ['', Validators.required],
+      estado: ['', Validators.required]
     });
   }
 
@@ -74,10 +83,16 @@ export class AddItemComponent {
     }
   }
 
-
-
   habilitarCantidad() {
     this.addItemForm.get('itemQuantity')?.enable();
+  }
+
+  agregarItem() {
+    if (this.addItemForm.valid) {
+      this.itemsAgregados.push(this.addItemForm.getRawValue());
+      this.addItemForm.reset();
+      this.addItemForm.get('itemQuantity')?.disable();
+    }
   }
 
 }

@@ -22,10 +22,16 @@
                 <div class="mb-3">
                     <button type="button" class="btn btn-primary">Añadir variaciones</button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <label for="name" class="form-label">Marca:</label>
                     <div class="input-group">
                         <input type="text" class="form-control" formControlName="marca" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">Serie:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="serie" placeholder="">
                     </div>
                 </div>
             </div>
@@ -47,7 +53,8 @@
                         placeholder="" />
                 </div>
                 <div class="mb-3">
-                    <button type="button" class="btn btn-primary" (click)="habilitarCantidad()">Guardar item único</button>
+                    <button type="button" class="btn btn-primary" (click)="habilitarCantidad()">Guardar item
+                        único</button>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Modelo:</label>
@@ -55,8 +62,20 @@
                         <input type="text" class="form-control" formControlName="modelo" placeholder="">
                     </div>
                 </div>
+                <label for="itemType" class="form-label">Estado: </label>
+                <div class="mb-3">
+                    <select class="form-select" formControlName="estado">
+                        <option value="" disabled selected>Seleccione un estado</option>
+                        <option *ngFor="let state of States" [value]="state.id">{{ state.state }}</option>
+                    </select>
+                </div>
             </div>
             <!-- Columna 3: No. Línea -->
+            <div class="text-end mt-3">
+                <button type="button" class="btn btn-success" (click)="agregarItem()">Agregar a la tabla</button>
+            </div>
+            <!-- Componente de tabla independiente -->
+            <app-custom-table [data]="itemsAgregados"></app-custom-table>
         </div>
 
     </form>
