@@ -6,7 +6,6 @@
   border-radius: 5px;
   display: flex;
   justify-content: center;
-  margin: 0px;
 }
 
 .container{
@@ -19,4 +18,8 @@
 
 .form-control, .form-select {
   max-width: 300px;
+}
+
+.btn{
+  margin-right: 10px;
 }

@@ -1,82 +1,77 @@
-<!-- <div class="general-container"></div>  -->
-<div class="p-3 container">
-    <form [formGroup]="addItemForm">
-        Este div se ajusta al contenido automáticamente
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="importCode" class="form-label">No. Importación:</label>
-                <div class="mb-3">
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'general'" (click)="activeTab = 'general'" type="button">
+            Datos generales
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'variaciones'" (click)="activeTab = 'variaciones'"
+            type="button">
+            Variaciones
+        </button>
+    </li>
+</ul>
+
+<!-- Cambiar *ngIf por [hidden] para no destruir los formularios -->
+<div [hidden]="activeTab !== 'general'" class="general-container">
+    <div class="p-3 container">
+        <form [formGroup]="addItemForm">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="importCode" class="form-label">No. Importación:</label>
                     <input type="text" id="importCode" class="form-control" formControlName="importCode"
-                        placeholder="" />
-                    <p class="mt-1 mb-0" *ngIf="mensaje" [ngClass]="{ 'text-success': valido, 'text-danger': !valido }">
+                        (blur)="verificarCodigo()" />
+                    <p *ngIf="mensaje" [ngClass]="{ 'text-success': valido, 'text-danger': !valido }" class="mt-1 mb-0">
                         {{ mensaje }}
                     </p>
-                </div>
-                <label for="itemType" class="form-label">Tipo de Equipo: </label>
-                <div class="mb-3">
-                    <select class="form-select" formControlName="itemType">
-                        <option value="" disabled selected>Seleccione un tipo</option>
-                        <option *ngFor="let item of Items" [value]="item.id">{{ item.item }}</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-primary">Añadir variaciones</button>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="name" class="form-label">Marca:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" formControlName="marca" placeholder="">
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="name" class="form-label">Serie:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" formControlName="serie" placeholder="">
-                    </div>
-                </div>
-            </div>
 
-            <!-- Columna 2: No. Línea -->
-            <div class="col-md-6">
-                <label for="importLine" class="form-label">No. Línea:</label>
-                <div class="mb-3">
-                    <input type="text" id="importLine" class="form-control" formControlName="lineCode" placeholder="" />
-                    <p class="mt-1 mb-0" *ngIf="mensajeLinea"
-                        [ngClass]="{ 'text-success': validoLinea, 'text-danger': !validoLinea }">
+                    <label for="itemType" class="form-label mt-3">Tipo de Equipo:</label>
+                    <select class="form-select" formControlName="itemType">
+                        <option value="" disabled>Seleccione un tipo</option>
+                        <option *ngFor="let item of Items" [value]="item.id">
+                            {{ item.item }}
+                        </option>
+                    </select>
+
+                    <label for="marca" class="form-label mt-3">Marca:</label>
+                    <input type="text" id="marca" class="form-control" formControlName="marca" />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="importLine" class="form-label">No. Línea:</label>
+                    <input type="text" id="importLine" class="form-control" formControlName="lineCode"
+                        (blur)="verificarCodigoLinea()" />
+                    <p *ngIf="mensajeLinea" [ngClass]="{ 'text-success': validoLinea, 'text-danger': !validoLinea }"
+                        class="mt-1 mb-0">
                         {{ mensajeLinea }}
                     </p>
-                </div>
 
-                <label for="itemQuantity" class="form-label">Cantidad de Items:</label>
-                <div class="mb-3">
-                    <input type="text" id="itemQuantity" class="form-control" formControlName="itemQuantity"
-                        placeholder="" />
-                </div>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-primary" (click)="habilitarCantidad()">Guardar item
-                        único</button>
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Modelo:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" formControlName="modelo" placeholder="">
-                    </div>
-                </div>
-                <label for="itemType" class="form-label">Estado: </label>
-                <div class="mb-3">
-                    <select class="form-select" formControlName="estado">
-                        <option value="" disabled selected>Seleccione un estado</option>
-                        <option *ngFor="let state of States" [value]="state.id">{{ state.state }}</option>
-                    </select>
+                    <label for="modelo" class="form-label mt-3">Modelo:</label>
+                    <input type="text" id="modelo" class="form-control" formControlName="modelo" />
+
+                    <label for="serie" class="form-label mt-3">Serie:</label>
+                    <input type="text" id="serie" class="form-control" formControlName="serie" />
                 </div>
             </div>
-            <!-- Columna 3: No. Línea -->
-            <div class="text-end mt-3">
-                <button type="button" class="btn btn-success" (click)="agregarItem()">Agregar a la tabla</button>
+
+            <div class="row">
+                <div class="col-12 text-end mt-3">
+                    <button type="button" class="btn btn-success" (click)="agregarItem()">
+                        Agregar a la tabla
+                    </button>
+                </div>
             </div>
-            <!-- Componente de tabla independiente -->
-            <app-custom-table [data]="itemsAgregados"></app-custom-table>
+        </form>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <app-custom-table [data]="itemsAgregados"></app-custom-table>
+            </div>
         </div>
+    </div>
+</div>
 
-    </form>
+<div [hidden]="activeTab !== 'variaciones'" class="variaciones-container p-3">
+    <app-add-variations [variaciones]="variacionesAgregadas" (variacionAgregada)="guardarVariacion($event)">
+    </app-add-variations>
 </div>

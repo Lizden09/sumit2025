@@ -1,27 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CustomTableComponent } from '../../shared/components/custom-table/custom-table.component';
+import { AddVariationsComponent } from '../add-variations/add-variations.component';
+
 
 @Component({
   selector: 'app-add-item',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, CustomTableComponent, AddVariationsComponent],
   templateUrl: './add-item.component.html',
   styleUrl: './add-item.component.css'
 })
 export class AddItemComponent {
   addItemForm!: FormGroup;
   private fb = inject(FormBuilder);
+  activeTab = 'general';
 
-  codigo = '';
   mensaje = '';
   valido = false;
 
-  codigoLinea = '';
   mensajeLinea = '';
   validoLinea = false;
 
   itemsAgregados: any[] = [];
+  variacionesAgregadas: any[] = [];
 
   Items = [
     { id: 1, item: 'Escritorio' },
@@ -29,21 +32,15 @@ export class AddItemComponent {
     { id: 3, item: 'Cargador' }
   ];
 
-  States = [
-    { id: 1, state: 'Nuevo' },
-    { id: 2, state: 'SemiNuevo' }
-  ];
 
   constructor() {
     this.addItemForm = this.fb.group({
       itemType: ['', Validators.required],
       importCode: ['', Validators.required],
       lineCode: ['', Validators.required],
-      itemQuantity: [{ value: '', disabled: true }, Validators.required], // deshabilitado desde el inicio
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
-      serie: ['', Validators.required],
-      estado: ['', Validators.required]
+      serie: ['', Validators.required]
     });
   }
 
@@ -83,16 +80,46 @@ export class AddItemComponent {
     }
   }
 
-  habilitarCantidad() {
-    this.addItemForm.get('itemQuantity')?.enable();
-  }
-
   agregarItem() {
     if (this.addItemForm.valid) {
-      this.itemsAgregados.push(this.addItemForm.getRawValue());
-      this.addItemForm.reset();
-      this.addItemForm.get('itemQuantity')?.disable();
+      this.itemsAgregados.push(this.addItemForm.value);
+      // No reseteamos para que mantenga los datos en inputs
     }
   }
+
+  guardarVariacion(variacion: any) {
+    this.variacionesAgregadas.push(variacion);
+  }
+
+  guardarTodo() {
+    const datosGenerales = this.addItemForm.getRawValue();
+    const payload = {
+      itemBase: datosGenerales,
+      variaciones: this.variacionesAgregadas
+    };
+    console.log('Datos para enviar al backend:', payload);
+    // Aquí iría la llamada al backend
+  }
+
+  guardarItem() {
+  if (this.addItemForm.valid && this.variacionesAgregadas.length > 0) {
+    const item = {
+      ...this.addItemForm.value,
+      variaciones: [...this.variacionesAgregadas]
+    };
+
+    this.itemsAgregados.push(item);
+
+    // Limpiamos formulario y variaciones
+    this.addItemForm.reset();
+    this.variacionesAgregadas = [];
+
+    // Mensaje opcional
+    console.log('Ítem guardado:', item);
+  } else {
+    alert('Debe completar los datos generales y agregar al menos una variación.');
+  }
+}
+
 
 }

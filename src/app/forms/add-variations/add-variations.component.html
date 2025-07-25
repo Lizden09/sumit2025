@@ -1,0 +1,108 @@
+<div class="general-container">
+    <div class="p-3 container">
+        <form [formGroup]="variationForm" (ngSubmit)="addVariacion()">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Estado</label>
+                    <select class="form-select" formControlName="state">
+                        <option value="" disabled>Seleccione un estado</option>
+                        <option *ngFor="let state of States" [value]="state.state">{{ state.state }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="itemQuantity" class="form-label">Cantidad de Items:</label>
+                    <input type="number" id="itemQuantity" class="form-control" formControlName="itemQuantity" />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Procesador</label>
+                    <select class="form-select" formControlName="procesador">
+                        <option value="" disabled>Seleccione un procesador</option>
+                        <option *ngFor="let p of Procesadores" [value]="p">{{ p }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Pantalla</label>
+                    <select class="form-select" formControlName="pantalla">
+                        <option value="" disabled>Seleccione tipo de pantalla</option>
+                        <option *ngFor="let t of Pantallas" [value]="t">{{ t }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>RAM</label>
+                    <select class="form-select" formControlName="ram">
+                        <option value="" disabled>Seleccione cantidad de RAM</option>
+                        <option *ngFor="let r of RAMs" [value]="r">{{ r }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Tipo de almacenamiento</label>
+                    <select class="form-select" formControlName="tipoAlmacenamiento">
+                        <option value="" disabled>Seleccione tipo</option>
+                        <option *ngFor="let t of TiposAlmacenamiento" [value]="t">{{ t }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Cantidad de almacenamiento</label>
+                    <select class="form-select" formControlName="cantidadAlmacenamiento">
+                        <option value="" disabled>Seleccione capacidad</option>
+                        <option *ngFor="let c of CapacidadesAlmacenamiento" [value]="c">{{ c }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Cantidad de puertos</label>
+                    <select class="form-select" formControlName="puertos">
+                        <option value="" disabled>Seleccione cantidad</option>
+                        <option *ngFor="let p of Puertos" [value]="p">{{ p }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Batería</label>
+                    <select class="form-select" formControlName="bateria">
+                        <option value="" disabled>Seleccione estado de batería</option>
+                        <option *ngFor="let b of Baterias" [value]="b">{{ b }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="button">
+                <button class="btn btn-primary" type="submit">Agregar variación</button>
+                <button class="btn btn-success">Guardar ítem</button>
+            </div>
+
+        </form>
+
+        <table class="table mt-4" *ngIf="variaciones.length > 0">
+            <thead>
+                <tr>
+                    <th>Estado</th>
+                    <th>Cantidad</th>
+                    <th>Procesador</th>
+                    <th>Pantalla</th>
+                    <th>RAM</th>
+                    <th>Almacenamiento</th>
+                    <th>Puertos</th>
+                    <th>Batería</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of variaciones">
+                    <td>{{ v.state }}</td>
+                    <td>{{ v.itemQuantity }}</td>
+                    <td>{{ v.procesador }}</td>
+                    <td>{{ v.pantalla }}</td>
+                    <td>{{ v.ram }}</td>
+                    <td>{{ v.tipoAlmacenamiento }} {{ v.cantidadAlmacenamiento }}</td>
+                    <td>{{ v.puertos }}</td>
+                    <td>{{ v.bateria }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
